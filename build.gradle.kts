@@ -36,8 +36,8 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     compileOnlyApi("jakarta.servlet:jakarta.servlet-api:5.0.0")
-    compileOnly("jakarta.websocket:jakarta.websocket-api:2.1.0")
-    compileOnly("jakarta.websocket:jakarta.websocket-client-api:2.1.0")
+    compileOnlyApi("jakarta.websocket:jakarta.websocket-api:2.1.0")
+    compileOnlyApi("jakarta.websocket:jakarta.websocket-client-api:2.1.0")
 
     api("io.github.yangentao:hare:[1.0.9,)")
 }

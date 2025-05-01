@@ -1,4 +1,5 @@
 import com.vanniktech.maven.publish.SonatypeHost
+import org.gradle.kotlin.dsl.compileOnly
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 buildscript {
@@ -9,6 +10,7 @@ buildscript {
 plugins {
     kotlin("jvm") version "2.1.20"
     signing
+    `java-library`
     id("maven-publish")
     id("org.jetbrains.dokka") version "2.0.0"
     id("com.vanniktech.maven.publish") version "0.31.0"
@@ -16,7 +18,7 @@ plugins {
 
 group = "io.github.yangentao"
 
-version = "1.0.9"
+version = "1.0.10"
 val artifactName = "harejee"
 val githubLib = "harejee"
 val descLib = "Java/Kotlin web."
@@ -33,8 +35,7 @@ dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib"))
 
-//    testImplementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
-    compileOnly("jakarta.servlet:jakarta.servlet-api:5.0.0")
+    compileOnlyApi("jakarta.servlet:jakarta.servlet-api:5.0.0")
     compileOnly("jakarta.websocket:jakarta.websocket-api:2.1.0")
     compileOnly("jakarta.websocket:jakarta.websocket-client-api:2.1.0")
 

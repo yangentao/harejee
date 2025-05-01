@@ -5,8 +5,8 @@ import io.github.yangentao.hare.HttpApp
 import io.github.yangentao.hare.HttpContext
 import io.github.yangentao.hare.HttpResult
 import io.github.yangentao.hare.utils.UriPath
-import io.github.yangentao.hare.utils.appendAll
 import io.github.yangentao.httpbasic.*
+import io.github.yangentao.types.appendAll
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import java.io.File

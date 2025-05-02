@@ -24,7 +24,7 @@ abstract class HareFilter : Filter {
     val servletContext: ServletContext get() = filterConfig.servletContext
     val contextPath: String get() = servletContext.contextPath
     val dirApp: File by lazy { File(servletContext.getRealPath("/")) }
-    val appName: String get() = filterConfig.getInitParameter("appname") ?: "APP"
+    open val appName: String get() = filterConfig.getInitParameter("appname") ?: "APP"
     lateinit var app: HttpApp
 
     override fun init(filterConfig: FilterConfig) {

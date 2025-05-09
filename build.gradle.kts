@@ -18,7 +18,7 @@ plugins {
 
 group = "io.github.yangentao"
 
-version = "1.0.11"
+version = "1.0.15"
 val artifactName = "harejee"
 val githubLib = "harejee"
 val descLib = "Java/Kotlin web."
@@ -39,7 +39,7 @@ dependencies {
     compileOnlyApi("jakarta.websocket:jakarta.websocket-api:2.1.0")
     compileOnlyApi("jakarta.websocket:jakarta.websocket-client-api:2.1.0")
 
-    api("io.github.yangentao:hare:[1.0.11,)")
+    api("io.github.yangentao:hare:[1.0.15,)")
 }
 
 tasks.test {

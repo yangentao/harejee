@@ -1,9 +1,9 @@
 package io.github.yangentao.harejee
 
-import io.github.yangentao.hare.log.logd
 import io.github.yangentao.hare.utils.encodedURL
 import io.github.yangentao.httpbasic.HttpHeader
 import io.github.yangentao.httpbasic.HttpMethod
+import io.github.yangentao.xlog.logd
 import jakarta.servlet.ServletRequest
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

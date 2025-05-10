@@ -2,11 +2,11 @@ package io.github.yangentao.harejee
 
 import io.github.yangentao.hare.HttpApp
 import io.github.yangentao.hare.TargetRouterAction
-import io.github.yangentao.hare.log.loge
 import io.github.yangentao.hare.utils.ensureDirs
 import io.github.yangentao.hare.utils.istart
 import io.github.yangentao.httpbasic.HttpMethod
 import io.github.yangentao.types.printX
+import io.github.yangentao.xlog.loge
 import jakarta.servlet.*
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -31,7 +31,7 @@ abstract class HareFilter : Filter {
         this.filterConfig = filterConfig
         filterConfig.dump()
         app = HttpApp(contextPath, appName, work = filterConfig.dirWork(), dirWeb = dirApp)
-        app.configLog()
+
         onCreate()
     }
 

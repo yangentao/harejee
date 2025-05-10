@@ -1,7 +1,7 @@
 package io.github.yangentao.harejee
 
-import io.github.yangentao.hare.log.logd
 import io.github.yangentao.types.DateTime
+import io.github.yangentao.xlog.logd
 import jakarta.websocket.CloseReason
 import jakarta.websocket.EndpointConfig
 import jakarta.websocket.OnClose

@@ -17,7 +17,7 @@ import java.io.File
 // https://docs.oracle.com/javaee/7/tutorial/servlets011.htm
 
 //@MultipartConfig
-//@WebFilter(urlPatterns = ["/*"], asyncSupported = true, initParams = [WebInitParam("appname", "APP")])
+//@WebFilter(urlPatterns = ["/*"], asyncSupported = true )
 abstract class HareFilter : Filter {
     var timeoutSeconds: Long = 15
     lateinit var filterConfig: FilterConfig

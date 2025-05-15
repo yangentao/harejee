@@ -4,9 +4,14 @@ import io.github.yangentao.hare.utils.encodedURL
 import io.github.yangentao.httpbasic.HttpHeader
 import io.github.yangentao.httpbasic.HttpMethod
 import io.github.yangentao.xlog.logd
+import jakarta.servlet.ServletContext
 import jakarta.servlet.ServletRequest
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import jakarta.websocket.Endpoint
+import jakarta.websocket.server.ServerContainer
+import jakarta.websocket.server.ServerEndpointConfig
+import kotlin.reflect.KClass
 
 //fun ServletContext.addFilter(name: String, cls: KClass<out Filter>, patternUrl: String) {
 //    val r: FilterRegistration.Dynamic = this.addFilter(name, cls.java)
@@ -58,3 +63,14 @@ internal fun options(request: HttpServletRequest, response: HttpServletResponse,
     }
     response.flushBuffer()
 }
+
+fun ServletContext.addWebsocket(endpoint: KClass<out Endpoint>, path: String) {
+    val sec = ServerEndpointConfig.Builder.create(endpoint.java, path).build()
+    addWebsocket(sec)
+}
+
+fun ServletContext.addWebsocket(config: ServerEndpointConfig) {
+    serverContainer.addEndpoint(config)
+}
+
+val ServletContext.serverContainer: ServerContainer get() = this.getAttribute(ServerContainer::class.qualifiedName) as ServerContainer

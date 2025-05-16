@@ -10,7 +10,9 @@ import io.github.yangentao.xlog.loge
 import jakarta.servlet.*
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import jakarta.websocket.Endpoint
 import java.io.File
+import kotlin.reflect.KClass
 
 // tomcatXX/conf/context.xml
 // <Context allowCasualMultipartParsing="true">...</Context>
@@ -33,6 +35,12 @@ abstract class HareFilter : Filter {
         app = HttpApp(contextPath, appName, work = filterConfig.dirWork(), dirWeb = dirApp)
 
         onCreate()
+    }
+
+    // 跟Filter的urlPattern没有父子关系,  只跟contextPath有关系. =>  /contextPath/echo/{ident}
+    // websocket( "/echo/{ident}", EchoEndpoint::class)
+    fun websocket(uri: String, endpoint: KClass<out Endpoint>) {
+        servletContext.addWebsocket(endpoint, uri)
     }
 
     abstract fun onCreate()

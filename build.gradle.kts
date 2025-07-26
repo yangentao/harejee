@@ -8,7 +8,7 @@ buildscript {
     }
 }
 plugins {
-    kotlin("jvm") version "2.1.20"
+    kotlin("jvm") version "2.2.0"
     signing
     `java-library`
     id("maven-publish")
@@ -18,7 +18,7 @@ plugins {
 
 group = "io.github.yangentao"
 
-version = "1.1.3"
+version = "2.0.0"
 val artifactName = "harejee"
 val githubLib = "harejee"
 val descLib = "Java/Kotlin web."
@@ -39,7 +39,7 @@ dependencies {
     compileOnlyApi("jakarta.websocket:jakarta.websocket-api:2.1.0")
     compileOnlyApi("jakarta.websocket:jakarta.websocket-client-api:2.1.0")
 
-    api("io.github.yangentao:hare:[1.1.3,)")
+    api("io.github.yangentao:hare:[2.0.0,)")
 }
 
 tasks.test {

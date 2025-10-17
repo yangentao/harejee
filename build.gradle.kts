@@ -38,7 +38,7 @@ dependencies {
     compileOnlyApi("jakarta.websocket:jakarta.websocket-api:2.1.0")
     compileOnlyApi("jakarta.websocket:jakarta.websocket-client-api:2.1.0")
 
-    api("io.github.yangentao:hare:[2.0.7,)")
+    api("io.github.yangentao:hare:[2.0.8,)")
 }
 
 tasks.test {

@@ -1,4 +1,4 @@
-package io.github.yangentao.harejee
+package io.github.yangentao.harejee.ws
 
 import io.github.yangentao.types.DateTime
 import io.github.yangentao.xlog.logd

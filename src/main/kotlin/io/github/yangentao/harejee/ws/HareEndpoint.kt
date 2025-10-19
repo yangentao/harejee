@@ -1,10 +1,14 @@
-package io.github.yangentao.harejee
+package io.github.yangentao.harejee.ws
 
 import io.github.yangentao.xlog.TagLog
-import jakarta.websocket.*
+import jakarta.websocket.CloseReason
+import jakarta.websocket.Endpoint
+import jakarta.websocket.EndpointConfig
+import jakarta.websocket.MessageHandler
+import jakarta.websocket.PongMessage
+import jakarta.websocket.Session
 
-open class BaseEndpoint : Endpoint() {
-    val pathParams: HashMap<String, String> = HashMap()
+open class HareEndpoint : Endpoint() {
     val wsLog = TagLog("websocket")
 
     open fun onTextMessage(session: Session, message: String) {
@@ -20,7 +24,6 @@ open class BaseEndpoint : Endpoint() {
     override fun onOpen(session: Session, config: EndpointConfig) {
         wsLog.d("open websocket: ", session.id, session.requestURI)
         wsLog.d("pathParameters: ", session.pathParameters)
-        pathParams.putAll(session.pathParameters)
         session.addMessageHandler(object : MessageHandler.Whole<String> {
             override fun onMessage(message: String) {
                 onTextMessage(session, message)

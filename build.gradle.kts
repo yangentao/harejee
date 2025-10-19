@@ -17,7 +17,7 @@ plugins {
 
 group = "io.github.yangentao"
 
-version = "2.0.9"
+version = "2.0.10"
 val artifactName = "harejee"
 val githubLib = "harejee"
 val descLib = "Java/Kotlin web."

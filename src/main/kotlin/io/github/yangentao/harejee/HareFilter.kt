@@ -4,6 +4,8 @@ import io.github.yangentao.hare.HttpApp
 import io.github.yangentao.hare.TargetRouterAction
 import io.github.yangentao.hare.utils.ensureDirs
 import io.github.yangentao.hare.utils.istart
+import io.github.yangentao.harejee.ws.HareEndpoint
+import io.github.yangentao.harejee.ws.HareSession
 import io.github.yangentao.httpbasic.HttpMethod
 import io.github.yangentao.types.printX
 import io.github.yangentao.xlog.loge
@@ -41,6 +43,11 @@ abstract class HareFilter : Filter {
     // websocket( "/echo/{ident}", EchoEndpoint::class)
     fun websocket(uri: String, endpoint: KClass<out Endpoint>) {
         servletContext.addWebsocket(endpoint, uri)
+    }
+
+    fun websocketSession(uri: String, session: KClass<out HareSession>) {
+        HareEndpoint.sessionClass = session
+        servletContext.addWebsocket(HareEndpoint::class, uri)
     }
 
     abstract fun onCreate()

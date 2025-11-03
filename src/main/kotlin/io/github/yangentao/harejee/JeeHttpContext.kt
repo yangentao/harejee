@@ -1,6 +1,5 @@
 package io.github.yangentao.harejee
 
-
 import io.github.yangentao.hare.HttpApp
 import io.github.yangentao.hare.HttpContext
 import io.github.yangentao.hare.HttpResult
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import java.io.File
 import java.nio.file.Files
-import kotlin.collections.iterator
 import kotlin.io.path.pathString
 
 class JeeHttpContext(override val app: HttpApp, val request: HttpServletRequest, val response: HttpServletResponse, override val routePath: UriPath) : HttpContext() {
@@ -27,8 +25,11 @@ class JeeHttpContext(override val app: HttpApp, val request: HttpServletRequest,
     }
 
     fun parseParams() {
+        for (k in request.headerNames) {
+            requestHeaders[k] = request.getHeader(k) ?: continue;
+        }
         for ((k, v) in request.parameterMap) {
-            paramMap.appendAll(k.substringBefore('['), v.toList())
+            requestParameters.appendAll(k.substringBefore('['), v.toList())
         }
         if (request.isMultipart) {
             for (p in request.parts) {
@@ -43,9 +44,6 @@ class JeeHttpContext(override val app: HttpApp, val request: HttpServletRequest,
     }
 
     override val requestContent: ByteArray? by lazy { request.inputStream.readAllBytes() }
-    override fun requestHeader(name: String): String? {
-        return request.getHeader(name)
-    }
 
     override fun responseHeader(name: String, value: Any) {
         response.setHeader(name, value.toString())

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package io.github.yangentao.harejee
 
 import io.github.yangentao.hare.HttpApp
